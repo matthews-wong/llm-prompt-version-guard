@@ -19,9 +19,13 @@ def read_lock(path: Path) -> dict:
     if not path.exists():
         raise PromptFileError(f"{path}: no lockfile; run `lock` first")
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        lock = json.loads(path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as error:
         raise PromptFileError(f"{path}: not valid JSON ({error})") from error
+    for name, entry in lock.items():
+        if not isinstance(entry, dict) or not {"version", "sha256"} <= entry.keys():
+            raise PromptFileError(f"{path}: entry {name!r} needs 'version' and 'sha256'")
+    return lock
 
 
 def main(argv: Optional[List[str]] = None) -> int:
