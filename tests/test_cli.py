@@ -56,3 +56,9 @@ class CliTest(unittest.TestCase):
         code, _, err = self.run_cli("check")
         self.assertEqual(code, 1)
         self.assertIn("not valid JSON", err)
+
+    def test_lock_entry_without_hash_is_reported(self) -> None:
+        (self.root / "lock.json").write_text('{"greet": {"version": "1.0.0"}}', encoding="utf-8")
+        code, _, err = self.run_cli("check")
+        self.assertEqual(code, 1)
+        self.assertIn("entry 'greet' needs", err)
