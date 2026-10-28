@@ -1,0 +1,9 @@
+name: classify-ticket
+version: 1.1.0
+---
+Classify the support ticket as one of: billing, bug, how-to, other.
+Answer with JSON only: {"label": "<one of the four>"}
+
+<ticket>
+{{ticket}}
+</ticket>
