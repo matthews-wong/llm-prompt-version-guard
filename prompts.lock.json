@@ -1,0 +1,10 @@
+{
+  "classify-ticket": {
+    "version": "1.1.0",
+    "sha256": "fb76779926d3a0986871456a2a20032f8af2713ee7bb90667d65c17b9a41ada7"
+  },
+  "summarize": {
+    "version": "1.0.0",
+    "sha256": "9573633aa12ddd9dbaa628e8db209e4c1cc5cd17fc565e2cf9a241f9b38d80b1"
+  }
+}
